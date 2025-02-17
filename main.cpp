@@ -1,0 +1,73 @@
+#include<iostream>
+#include<string>
+#include<cstdlib>
+using namespace std;
+#define N 5
+
+class Profile{
+public:
+    Profile(){}
+    Profile(int sage)
+    {age=sage;}
+    void setAge(int pp)
+    {age=pp;}
+    int getAge()
+    {return age;}
+    void setName(string nn)
+    {name=nn;}
+    string getName()
+    {return name;}
+
+    bool operator>(const Profile& other) const {
+        return age>other.age;
+    }
+
+    int & operator[](int index) {
+        return a[index];
+    }
+
+    void displayArray() {
+        for (int i = 0; i < N; i++) {
+            cout << a[i] << " ";
+        }
+        cout << endl;
+    }
+    friend ostream & operator<<(ostream &var, Profile p);
+private:
+    string name;
+    int id, age;
+    int a[N];
+};
+
+ostream& operator<<(ostream& var, Profile p) {
+    var << p.getName() << " " << p.getAge();
+    return var;
+}
+
+
+int main()
+{
+    Profile p1, p2;
+    p1.setName("Halil");
+    p1.setAge(40);
+    p2.setAge(30);
+
+    cout <<"Array members for" << p1 << endl;
+
+    for(int i=0;i<N;i++)
+        p1[i]=1 + rand()%6;
+   if (p1 > p2)
+    p1.displayArray();
+}
+
+int & Profile::operator[](int index)
+{
+
+}
+ostream & operator<<(ostream &var, Profile p)
+{
+}
+// TIP See CLion help at <a
+// href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>.
+//  Also, you can try interactive lessons for CLion by selecting
+//  'Help | Learn IDE Features' from the main menu.
