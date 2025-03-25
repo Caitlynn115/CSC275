@@ -1,3 +1,14 @@
+/*************************************************************
+Author: Caitlynn Johnson
+Program: HW3, Q2
+Date Created: March 24, 2025
+Date Last Modified: March 24, 2025
+Usage: No Command Line Arguments
+
+Problem: Copy in starter files to main.cpp. Create two new classes called Rectangle and Triangle. Create constructors for both width and height. 
+Create two pure virtual functions, getArea and draw. Rectangle should be width * height and Triangle should be width * height / 2.
+Us the drasw function to create a visual of the Rectangle and Triangle. Answer the Error Questions.
+***************************************************************/
 #include <iostream>
 #include "Polygon.h"
 #include "Rectangle.h"
@@ -21,6 +32,15 @@ int main() {
 
     return 0;
 }
+
+/******************************************
+Question 1: Error - Cannot declare variable 'p' to be of abstract type 'Polygon'
+Polygon has a pure virtual function therefore making the class abstract.
+
+Question 2: Error - Undefined reference to Polygon
+All virtual methods that aren't pure must be defined, in this case area() does not have a
+definition.
+ *****************************************/
 // TIP See CLion help at <a
 // href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>.
 //  Also, you can try interactive lessons for CLion by selecting
