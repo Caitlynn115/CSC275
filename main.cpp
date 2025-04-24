@@ -1,0 +1,62 @@
+/*****************************************************************
+ Author: Caitlynn Johnson
+ Program: Homework #5
+ Date Created: April 22nd, 2025
+ Date Last Modified: April 24th, 2025
+ Usage: No Command Line Arguements
+
+ Problem: Complete - Node class template, MyList friend class,
+ Node <T> *head only. void insertHead(T the Data),
+ T deleteHead(), bool search(T & target), void display(),
+ and two partially completed code segments.
+ ******************************************************************/
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include "MyList.h"
+
+struct Profile {
+    string fullname;
+    string state;
+
+    bool operator == (Profile rhs) {
+        return fullname == rhs.fullname;
+    }
+    bool operator != (Profile rhs) {
+        return fullname != rhs.fullname;
+    }
+};
+
+ostream & operator << (ostream & out, Profile & user) {
+    out << user.fullname << ", " << user.state;
+    return out;
+}
+
+int main() {
+    MyList <Profile> pMyList;
+    Profile temp;
+    string line;
+
+    ifstream file ("presidentWstates.txt");
+    if (file.is_open()) {
+        while (getline (file, line)) {
+            stringstream ss (line);
+            getline (ss, temp.fullname);
+            getline (ss, temp.state);
+            pMyList.insertHead (temp);
+        }
+
+        file.close ();
+    } else {
+        cerr << "Unable To Access File";
+        return 1;
+    }
+
+    cout << "List: ";
+    pMyList.display();
+    return 0;
+}
+// TIP See CLion help at <a
+// href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>.
+//  Also, you can try interactive lessons for CLion by selecting
+//  'Help | Learn IDE Features' from the main menu.
